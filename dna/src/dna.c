@@ -29,9 +29,20 @@ dna2[lbyte2]='\0';
 
 char *mutual = malloc(sizeof(char) *MAX);
 char *tmp = malloc(sizeof(char) *MAX);
-int i,j;
+unsigned int i,j;
 size_t length1=strlen(dna1);
 size_t length2=strlen(dna2);
+
+if (dna1 == NULL || dna2 == NULL || mutual == NULL || tmp == NULL) {
+    printf("Error: memory allocation failed\n");
+    fclose(file1);
+    fclose(file2);
+    free(dna1);
+    free(dna2);
+    free(mutual);
+    free(tmp);
+    return 1;
+}
 
 for (i = 0; i < MAX; i++) {
     mutual[i] = '\0';
@@ -41,7 +52,7 @@ for (i = 0; i < MAX; i++) {
 for(i=0;i<length1;i++){
    for(j=0;j<length2;j++){
       if(dna1[i]==dna2[j]){
-         int k=0;
+         unsigned int k=0;
          while(dna1[i]==dna2[j]){
             tmp[k]=dna2[j];
             i++;
@@ -50,7 +61,7 @@ for(i=0;i<length1;i++){
          }
          i=i-k;
          j--;
-         if(strlen(mutual)<=strlen(tmp)){
+         if(strlen(mutual)<strlen(tmp)){
              strcpy(mutual,tmp);
          }
          k=0;
