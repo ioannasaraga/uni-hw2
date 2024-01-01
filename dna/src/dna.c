@@ -50,10 +50,18 @@ for (i = 0; i < MAX; i++) {
  }
 
 for(i=0;i<length1;i++){
+    
    for(j=0;j<length2;j++){
+      if(dna1[i] != 'A' && dna1[i] != 'G'  && dna1[i] != 'T' && dna1[i] != 'C' ){
+         break;
+      }
+   
       if(dna1[i]==dna2[j]){
          unsigned int k=0;
          while(dna1[i]==dna2[j]){
+           if(dna2[j] != 'A' && dna2[j] != 'G'  && dna2[j] != 'T' && dna2[j] != 'C' ){
+              break;
+           }
             tmp[k]=dna2[j];
             i++;
             j++;
