@@ -9,37 +9,49 @@
 int main(void){
     int me=D;
     int player;
-    putchar(me); 
+    int rounds=0;
+    putchar(me);
     fflush(stdout);
-    printf("\n"); 
+    putchar('\n');
+    fflush(stdout);
     player=getchar(); 
-    int rounds=1;
-    while((player != EOF)&&(rounds<MAX)){
-    if(player!=C && player!=D){
+    rounds++;
+    while((player != EOF)&&(rounds<=MAX)){
+    if((player!=C) && (player!=D)){
       player=getchar();
       continue;
     }
-     if(rounds%3==0){
-        if(player==D){
-          putchar(C);
-          putchar('\n');
+    if(rounds==MAX){
+      break;
+    }
+    
+       if(rounds%3==0){
+          if(player==D){
+            putchar(C);
+            fflush(stdout);
+            putchar('\n');
        
-        }
-        else{
-          putchar(D);
-          putchar('\n');
+          }
+          else{
+            putchar(D);
+            fflush(stdout);
+            putchar('\n');
     
         }
-     }
-     else{
-      me=player;
-      putchar(me);
-      putchar('\n');
+      }
+      else{
+        me=player;
+        putchar(me);
+        fflush(stdout);
+        putchar('\n');
 
+       }
+     
+
+       fflush(stdout);
+       player=getchar();
+       rounds++;
+      
      }
-     fflush(stdout);
-     player=getchar();
-     rounds++;
-    }
     return 0;
 }
