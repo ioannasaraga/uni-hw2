@@ -27,6 +27,9 @@ int main() {
     }
     int pixel_offset;
     pixel_offset = *(unsigned int *)(headers + STARTPIXELS);//βρίσκουμε που ξεκινάνε τα πίξελ δηλαδή τον αριθμο των headers
+    if(pixel_offset<54){//ελέγχουμε ότι τα αρχεία έχουν το κατάλληλο αριθμό headers
+        exit(1);
+    }
     int diafora = pixel_offset - 14;
     otherdata = malloc(diafora * sizeof(char));//δημιουργώ τον πίνακα που θα αποθηκεύσει τα υπόλοιπα headers
     //από εδώ και κάτω προτιμώ την malloc επειδή δεν έχουμε συγκεκρίμενα νούμερα και επιθυμούμε να δεσμεύσουμε μόνο όσα χρειαζόμαστε 
